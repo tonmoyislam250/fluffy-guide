@@ -30,7 +30,7 @@ jobs:
         name: Create outputs folder
         run: mkdir outputs
       -
-        name: Build MegaSDK-REST
+        name: Build alpinesdk
         uses: docker/build-push-action@v3
         with:
           context: .
@@ -46,6 +46,9 @@ jobs:
           tar xf dist-${{ matrix.dist }}.tar
           rm -rf *.tar
           ls -a
+          rm -rf aports-3.16-stable.tar.gz aports-3.16-stable crypto++
+          tar -czf packages.tar.gz packages
+          rm -rf packages && ls -a
       -
         name: Upload artifacts
         uses: actions/upload-artifact@v3
@@ -64,7 +67,7 @@ jobs:
       -
         run: |
           mkdir outputs
-          cp artifacts/packages/* outputs/
+          cp artifacts/* outputs/
       -
         name: Create Release
         uses: softprops/action-gh-release@v1
