@@ -15,4 +15,4 @@ RUN su -c "cp -r /home/builder/aports-3.16-stable/testing/crypto++/ . \
 
 FROM scratch AS alpinesdk
 
-COPY --from=maker /home/builder/packages/ /
+COPY --from=maker /home/builder/ /
