@@ -9,6 +9,6 @@ RUN apk --no-cache add alpine-sdk coreutils cmake sudo \
 WORKDIR /home/builder
 RUN chmod 777 /home/builder
 RUN wget https://gitlab.alpinelinux.org/alpine/aports/-/archive/3.16-stable/aports-3.16-stable.tar.gz && tar -xf aports-3.16-stable.tar.gz
-RUN su builder && cp -r /home/builder/aports-3.16-stable/testing/crypto++/ . \
+RUN su -c builder cp -r /home/builder/aports-3.16-stable/testing/crypto++/ . \
     && cd crypto++ && abuild-keygen -i -n -a && abuild -r \
     && cd ../packages && ls -a
