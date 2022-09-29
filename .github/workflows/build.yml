@@ -1,4 +1,4 @@
-name: Release MegaSDK-REST
+name: Release Alpine-SDK
 
 on:
   push:
@@ -46,7 +46,6 @@ jobs:
           tar xf dist-${{ matrix.dist }}.tar
           rm -rf *.tar
           ls -a
-          rm -rf aports-3.16-stable.tar.gz aports-3.16-stable crypto++
           tar -czf packages.tar.gz packages
           rm -rf packages && ls -a
       -
