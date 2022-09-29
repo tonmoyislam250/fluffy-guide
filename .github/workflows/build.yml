@@ -45,7 +45,7 @@ jobs:
           cd outputs
           tar xf dist-${{ matrix.dist }}.tar
           rm -rf *.tar
-          cd /packages/ && ls -a
+          ls -a
       -
         name: Upload artifacts
         uses: actions/upload-artifact@v3
