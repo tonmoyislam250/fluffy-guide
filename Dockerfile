@@ -30,7 +30,7 @@ RUN su -c "mkdir google && cp -r /home/builder/aports-3.16-stable/main/brotil/ .
 
 
 
-RUN ls -a && ls -a /home/builder/packages/
+RUN cp -r /home/builder/packages/ /usr/
 FROM scratch AS alpinesdk
 
-COPY --from=maker /home/builder/ /
+COPY --from=maker /usr/ /
