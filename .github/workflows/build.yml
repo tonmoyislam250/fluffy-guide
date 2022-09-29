@@ -1,4 +1,4 @@
-name: Build megasdkbase image
+name: Build alpine packages
 
 on:
   workflow_dispatch
