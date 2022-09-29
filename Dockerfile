@@ -22,11 +22,11 @@ RUN su -c "mkdir sodium && cp -r /home/builder/aports-3.16-stable/main/libsodium
 RUN su -c "mkdir cares && cp -r /home/builder/aports-3.16-stable/main/c-ares/ ./cares/ \
     && cd cares/c-ares && abuild-keygen -i -n -a && abuild -r" builder
 
-RUN su -c "mkdir library && cp -r /home/builder/aports-3.16-stable/main/z-lib/ ./library/ \
-    && cd library/z-lib && abuild-keygen -i -n -a && abuild -r" builder
+RUN su -c "mkdir library && cp -r /home/builder/aports-3.16-stable/main/zlib/ ./library/ \
+    && cd library/zlib && abuild-keygen -i -n -a && abuild -r" builder
 
-RUN su -c "mkdir google && cp -r /home/builder/aports-3.16-stable/main/brotil/ ./google/ \
-    && cd google/crypto++ && abuild-keygen -i -n -a && abuild -r" builder
+RUN su -c "mkdir google && cp -r /home/builder/aports-3.16-stable/main/brotli/ ./google/ \
+    && cd google/brotli && abuild-keygen -i -n -a && abuild -r" builder
 
 
 
