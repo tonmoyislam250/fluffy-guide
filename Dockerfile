@@ -36,14 +36,19 @@ RUN wget https://gitlab.alpinelinux.org/alpine/aports/-/archive/3.15-stable/apor
 # RUN su -c "mkdir http && cp -r /home/builder/aports-3.15-stable/main/nghttp2 ./http/ \
 #     && cd http/nghttp2 && abuild-keygen -i -n -a && abuild -r" builder
 
-RUN su -c "mkdir ssl && cp -r /home/builder/aports-3.15-stable/main/openssl ./ssl/ \
-   && cd ssl/openssl && abuild-keygen -i -n -a && abuild -r" builder
+#RUN su -c "mkdir ssl && cp -r /home/builder/aports-3.15-stable/main/openssl ./ssl/ \
+#   && cd ssl/openssl && abuild-keygen -i -n -a && abuild -r" builder
 
 
-# RUN tar -czf apkbuild.tar.gz crypto sqlight sodium cares library google curly http
-RUN tar -czf apkbuild.tar.gz ssl
+#RUN tar -czf apkbuild.tar.gz crypto sqlight sodium cares library google curly http
+#RUN tar -czf apkbuild.tar.gz ssl
 
-RUN mkdir /abc && cp -r /home/builder/packages/ /abc/ && cp apkbuild.tar.gz /abc
+
+RUN su -c "mkdir aria && cp -r /home/builder/aports-3.15-stable/community/aria2 ./aria/ \
+   && cd aria/aria2 && abuild-keygen -i -n -a && abuild -r" builder
+
+
+RUN mkdir /abc && cp -r /home/builder/packages/ /abc/
 FROM scratch AS alpinesdk
 
 COPY --from=maker /abc/ /
