@@ -1,6 +1,6 @@
 FROM alpine:3.15 as maker
 RUN apk --no-cache add alpine-sdk coreutils cmake linux-headers perl musl m4 sudo \
-  gnutls-dev expat-dev sqlite-dev c-ares-dev cppunit-dev
+  gnutls-dev expat-dev sqlite-dev c-ares-dev cppunit-dev \
   && adduser -G abuild -g "Alpine Package Builder" -s /bin/ash -D builder \
   && echo "builder ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers \
   && mkdir /packages \
