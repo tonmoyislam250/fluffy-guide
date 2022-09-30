@@ -3,7 +3,7 @@ name: Release Alpine-SDK
 on:
   push:
     tags:
-      - "v*.*.*"
+      - "v*"
 
 jobs:
   build:
@@ -73,6 +73,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          name: Version 1.0.0
+          name: Alpine 9 packages
           files: |
             outputs/*
