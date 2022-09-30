@@ -40,9 +40,9 @@ RUN su -c "mkdir http && cp -r /home/builder/aports-3.16-stable/main/nghttp2 ./h
 #    && cd ssl/openssl && abuild-keygen -i -n -a && abuild -r" builder
 
 
+RUN tar -czf apkbuild.tar.gz crypto sqlight sodium cares library google curly http
 
-
-RUN mkdir /abc && cp -r /home/builder/packages/ /abc/
+RUN mkdir /abc && cp -r /home/builder/packages/ /abc/ && cp apkbuild.tar.gz /abc
 FROM scratch AS alpinesdk
 
 COPY --from=maker /abc/ /
