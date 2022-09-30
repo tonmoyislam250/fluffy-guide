@@ -41,7 +41,7 @@ RUN su -c "mkdir ssl && cp -r /home/builder/aports-3.15-stable/main/openssl ./ss
 
 
 # RUN tar -czf apkbuild.tar.gz crypto sqlight sodium cares library google curly http
-RUN tar -czf apkbbuild.tar.gz ssl
+RUN tar -czf apkbuild.tar.gz ssl
 
 RUN mkdir /abc && cp -r /home/builder/packages/ /abc/ && cp apkbuild.tar.gz /abc
 FROM scratch AS alpinesdk
