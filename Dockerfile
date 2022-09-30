@@ -29,6 +29,18 @@ RUN su -c "mkdir google && cp -r /home/builder/aports-3.16-stable/main/brotli/ .
     && cd google/brotli && abuild-keygen -i -n -a && abuild -r" builder
 
 
+RUN su -c "mkdir curly && cp -r /home/builder/aports-3.16-stable/main/curl/ ./curly/ \
+    && cd curly/curl && abuild-keygen -i -n -a && abuild -r" builder
+
+
+RUN su -c "mkdir http && cp -r /home/builder/aports-3.16-stable/main/nghttp2 ./http/ \
+    && cd http/nghttp2 && abuild-keygen -i -n -a && abuild -r" builder
+
+#RUN su -c "mkdir ssl && cp -r /home/builder/aports-3.16-stable/main/openssl ./ssl/ \
+#    && cd ssl/openssl && abuild-keygen -i -n -a && abuild -r" builder
+
+
+
 
 RUN mkdir /abc && cp -r /home/builder/packages/ /abc/
 FROM scratch AS alpinesdk
