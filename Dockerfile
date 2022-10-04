@@ -11,7 +11,7 @@ WORKDIR /home/builder
 RUN chmod 777 /home/builder
 RUN wget https://gitlab.alpinelinux.org/alpine/aports/-/archive/3.15-stable/aports-3.15-stable.tar.gz && tar -xf aports-3.15-stable.tar.gz
 
-RUN su -c "mkdir crypto && cp -r /home/builder/aports-3.15-stable/testing/crypto++/ ./crypto/      
+RUN su -c "mkdir crypto && cp -r /home/builder/aports-3.15-stable/testing/crypto++/ ./crypto/ \
     && cd crypto/crypto++ && abuild-keygen -i -n -a && abuild -r" builder
 
 RUN su -c "mkdir sqlight && cp -r /home/builder/aports-3.15-stable/main/sqlite ./sqlight/ \
