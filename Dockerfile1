@@ -9,35 +9,35 @@ RUN apk --no-cache add alpine-sdk coreutils cmake linux-headers perl musl m4 sud
   && ln -s /var/cache/apk /etc/apk/cache
 WORKDIR /home/builder
 RUN chmod 777 /home/builder
-RUN wget https://github.com/tonmoyislam250/super-octo-guide/archive/refs/tags/v1.tar.gz && tar -xf v1.tar.gz
-RUN ls -la && pwd
-RUN su -c "mkdir crypto && cp -r /home/builder/v1/testing/crypto++/ ./crypto/ \
+RUN wget https://github.com/tonmoyislam250/super-octo-guide/archive/refs/tags/super-octo-guide-1.tar.gz && tar -xf v1.tar.gz
+
+RUN su -c "mkdir crypto && cp -r /home/builder/super-octo-guide-1/testing/crypto++/ ./crypto/ \
     && cd crypto/crypto++ && abuild-keygen -i -n -a && abuild -r" builder
 
-RUN su -c "mkdir sqlight && cp -r /home/builder/v1/main/sqlite ./sqlight/ \
+RUN su -c "mkdir sqlight && cp -r /home/builder/super-octo-guide-1/main/sqlite ./sqlight/ \
     && cd sqlight/sqlite && abuild-keygen -i -n -a && abuild -r" builder
 
-RUN su -c "mkdir sodium && cp -r /home/builder/v1/main/libsodium ./sodium/ \
+RUN su -c "mkdir sodium && cp -r /home/builder/super-octo-guide-1/main/libsodium ./sodium/ \
     && cd sodium/libsodium && abuild-keygen -i -n -a && abuild -r" builder
 
-RUN su -c "mkdir cares && cp -r /home/builder/v1/main/c-ares/ ./cares/ \
+RUN su -c "mkdir cares && cp -r /home/builder/super-octo-guide-1/main/c-ares/ ./cares/ \
     && cd cares/c-ares && abuild-keygen -i -n -a && abuild -r" builder
 
-RUN su -c "mkdir library && cp -r /home/builder/v1/main/zlib/ ./library/ \
+RUN su -c "mkdir library && cp -r /home/builder/super-octo-guide-1/main/zlib/ ./library/ \
     && cd library/zlib && abuild-keygen -i -n -a && abuild -r" builder
 
-RUN su -c "mkdir google && cp -r /home/builder/v1/main/brotli/ ./google/ \
+RUN su -c "mkdir google && cp -r /home/builder/super-octo-guide-1/main/brotli/ ./google/ \
      && cd google/brotli && abuild-keygen -i -n -a && abuild -r" builder
 
 
-RUN su -c "mkdir curly && cp -r /home/builder/v1/main/curl/ ./curly/ \
+RUN su -c "mkdir curly && cp -r /home/builder/super-octo-guide-1/main/curl/ ./curly/ \
      && cd curly/curl && abuild-keygen -i -n -a && abuild -r" builder
 
 
- RUN su -c "mkdir http && cp -r /home/builder/v1/main/nghttp2 ./http/ \
+ RUN su -c "mkdir http && cp -r /home/builder/super-octo-guide-1/main/nghttp2 ./http/ \
      && cd http/nghttp2 && abuild-keygen -i -n -a && abuild -r" builder
 
-RUN su -c "mkdir ssl && cp -r /home/builder/v1/main/openssl ./ssl/ \
+RUN su -c "mkdir ssl && cp -r /home/builder/super-octo-guide-1/main/openssl ./ssl/ \
    && cd ssl/openssl && abuild-keygen -i -n -a && abuild -r" builder
 
 
@@ -45,7 +45,7 @@ RUN tar -czf apkbuild.tar.gz crypto sqlight sodium cares library google curly ht
 #RUN tar -czf apkbuild.tar.gz ssl
 
 
-#RUN su -c "mkdir aria && cp -r /home/builder/v1/community/aria2 ./aria/ \
+#RUN su -c "mkdir aria && cp -r /home/builder/super-octo-guide-1/community/aria2 ./aria/ \
 #   && cd aria/aria2 && abuild-keygen -i -n -a && abuild -r" builder
 
 
