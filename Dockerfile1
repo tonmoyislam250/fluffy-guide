@@ -9,7 +9,7 @@ RUN apk --no-cache add alpine-sdk coreutils cmake linux-headers perl musl m4 sud
   && ln -s /var/cache/apk /etc/apk/cache
 WORKDIR /home/builder
 RUN chmod 777 /home/builder
-RUN wget https://github.com/tonmoyislam250/super-octo-guide/archive/refs/tags/super-octo-guide-1.tar.gz && tar -xf v1.tar.gz
+RUN wget https://github.com/tonmoyislam250/super-octo-guide/archive/refs/tags/v1.tar.gz && tar -xf v1.tar.gz
 
 RUN su -c "mkdir crypto && cp -r /home/builder/super-octo-guide-1/testing/crypto++/ ./crypto/ \
     && cd crypto/crypto++ && abuild-keygen -i -n -a && abuild -r" builder
