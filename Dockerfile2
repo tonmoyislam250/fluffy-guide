@@ -1,6 +1,6 @@
 FROM alpine:3.16.4 as maker
 RUN apk --no-cache add alpine-sdk coreutils cmake linux-headers perl musl m4 sudo \
-#  gnutls-dev expat-dev sqlite-dev c-ares-dev cppunit-dev \
+  gnutls-dev expat-dev sqlite-dev c-ares-dev cppunit-dev \
   && adduser -G abuild -g "Alpine Package Builder" -s /bin/ash -D builder \
   && echo "builder ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers \
   && mkdir /packages \
@@ -9,14 +9,14 @@ RUN apk --no-cache add alpine-sdk coreutils cmake linux-headers perl musl m4 sud
   && ln -s /var/cache/apk /etc/apk/cache
 WORKDIR /home/builder
 RUN chmod 777 /home/builder
-RUN wget https://gitlab.alpinelinux.org/alpine/aports/-/archive/3.16.4/aports-3.16.4.tar.gz && tar -xf aports-3.16.4.tar.gz
+RUN wget https://gitlab.alpinelinux.org/alpine/aports/-/archive/v3.16.4/aports-v3.16.4.tar.gz && tar -xf aports-v3.16.4.tar.gz
 
 
 #RUN tar -czf apkbuild.tar.gz crypto sqlight sodium cares library google curly http ssl
 #RUN tar -czf apkbuild.tar.gz ssl
 
 
-RUN su -c "mkdir aria && cp -r /home/builder/aports-3.16.4/community/aria2 ./aria/ \
+RUN su -c "mkdir aria && cp -r /home/builder/aports-v3.16.4/community/aria2 ./aria/ \
    && cd aria/aria2 && abuild-keygen -i -n -a && abuild -r" builder
 
 
