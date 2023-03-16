@@ -12,12 +12,16 @@ RUN chmod 777 /home/builder
 RUN wget https://gitlab.alpinelinux.org/alpine/aports/-/archive/v3.16.4/aports-v3.16.4.tar.gz && tar -xf aports-v3.16.4.tar.gz
 
 
+RUN su -c "mkdir ffmpeg2 && cp -r /home/builder/aports-v3.16.4/community/ffmpeg ./ffmpeg2/ \
+   && cd ffmpeg2/ffmpeg && abuild-keygen -i -n -a && abuild -r" builder
+
+
 #RUN tar -czf apkbuild.tar.gz crypto sqlight sodium cares library google curly http ssl
 #RUN tar -czf apkbuild.tar.gz ssl
 
 
-RUN su -c "mkdir aria && cp -r /home/builder/aports-v3.16.4/community/aria2 ./aria/ \
-   && cd aria/aria2 && abuild-keygen -i -n -a && abuild -r" builder
+#RUN su -c "mkdir aria && cp -r /home/builder/aports-v3.16.4/community/aria2 ./aria/ \
+#   && cd aria/aria2 && abuild-keygen -i -n -a && abuild -r" builder
 
 
 RUN mkdir /abc && cp -r /home/builder/packages/ /abc/
