@@ -1,7 +1,11 @@
 FROM alpine:3.16.4 as maker
 RUN apk --no-cache add alpine-sdk coreutils cmake linux-headers perl musl m4 sudo \
   gnutls-dev expat-dev sqlite-dev c-ares-dev cppunit-dev \
-  alsa-lib-dev aom-dev bzip2-dev coreutils gnutls-dev imlib2-dev lame-dev libass-dev libdrm-dev librist-dev libsrt-dev libssh-dev libtheora-dev libva-dev libvdpau-dev libvorbis-dev libvpx-dev libwebp-dev libxfixes-dev opus-dev perl-dev pulseaudio-dev sdl2-dev soxr-dev v4l-utils-dev x264-dev x265-dev xvidcore-dev yasm zlib-dev dav1d-dev vidstab-dev vulkan-loader-dev \
+  alsa-lib-dev aom-dev bzip2-dev coreutils gnutls-dev imlib2-dev \
+  lame-dev libass-dev libdrm-dev librist-dev libsrt-dev libssh-dev \
+  libtheora-dev libva-dev libvdpau-dev libvorbis-dev libvpx-dev libwebp-dev \
+  libxfixes-dev opus-dev perl-dev pulseaudio-dev sdl2-dev soxr-dev v4l-utils-dev x264-dev x265-dev \
+  xvidcore-dev yasm zlib-dev dav1d-dev vidstab-dev vulkan-loader-dev \
   && adduser -G abuild -g "Alpine Package Builder" -s /bin/ash -D builder \
   && echo "builder ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers \
   && mkdir /packages \
