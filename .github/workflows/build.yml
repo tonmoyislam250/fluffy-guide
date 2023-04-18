@@ -1,9 +1,7 @@
 name: Release Alpine-SDK
 
 on:
-  push:
-    tags:
-      - "v*"
+  workflow_dispatch:
 
 jobs:
   build:
@@ -34,7 +32,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: .
-          file: ./Dockerfile1
+          file: ./Dockerfile
           platforms: ${{ matrix.arch }}
           outputs: type=tar,dest=outputs/dist-${{ matrix.dist }}.tar
           push: false
@@ -54,25 +52,3 @@ jobs:
         with:
           name: Pancakes
           path: outputs/*
-
-  release:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      -
-        uses: actions/download-artifact@v3
-        with:
-          path: artifacts
-      -
-        run: |
-          mkdir outputs
-          cp artifacts/Pancakes/* outputs/
-      -
-        name: Create Release
-        uses: softprops/action-gh-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          name: Alpine 9 packages
-          files: |
-            outputs/*
