@@ -41,7 +41,7 @@ RUN su -c "mkdir cares && cp -r /home/builder/aports-master/main/c-ares/ ./cares
 
 #RUN su -c "mkdir ssl && cp -r /home/builder/aports-3.16-stable/main/openssl ./ssl/ \
 #   && cd ssl/openssl && abuild-keygen -i -n -a && abuild -r" builder
-
+RUN ls crypto 
 RUN cd crypto/x86_64/ && apk add --allow-untrusted *.apk
 RUN cd cares/x86_64/ && apk add --allow-untrusted *.apk
 
