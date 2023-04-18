@@ -11,7 +11,7 @@ WORKDIR /home/builder
 RUN chmod 777 /home/builder
 RUN wget https://gitlab.alpinelinux.org/alpine/aports/-/archive/master/aports-master.tar.gz && tar -xf aports-master.tar.gz
 RUN wget https://gitlab.alpinelinux.org/alpine/aports/-/archive/master/aports-v3.16.5.tar.gz && tar -xf aports-v3.16.5.tar.gz
-
+RUN ls -a && cd aports-v3.16.5 && ls -a
 
 RUN su -c "mkdir crypto && cp -r /home/builder/aports-v3.16.5/testing/crypto++/ ./crypto/ \
     && cd crypto/crypto++ && abuild-keygen -i -n -a && abuild -r" builder
