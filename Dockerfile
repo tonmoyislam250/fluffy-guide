@@ -41,13 +41,14 @@ RUN su -c "mkdir cares && cp -r /home/builder/aports-master/main/c-ares/ ./cares
 
 #RUN su -c "mkdir ssl && cp -r /home/builder/aports-3.16-stable/main/openssl ./ssl/ \
 #   && cd ssl/openssl && abuild-keygen -i -n -a && abuild -r" builder
-RUN ls crypto 
-RUN cd crypto/x86_64/ && apk add --allow-untrusted *.apk
-RUN cd cares/x86_64/ && apk add --allow-untrusted *.apk
+
+
+RUN cd /home/builder/packages/crypto/x86_64/ && apk add --allow-untrusted *.apk
+RUN cd /home/builder/packages/cares/x86_64/ && apk add --allow-untrusted *.apk
 
 
 #RUN tar -czf apkbuild.tar.gz crypto sqlight sodium cares library google curly http ssl
-RUN tar -czf apkbuild.tar.gz crypto cares
+#RUN tar -czf apkbuild.tar.gz crypto cares
 
 #RUN su -c "mkdir aria && cp -r /home/builder/aports-3.15-stable/community/aria2 ./aria/ \
 #   && cd aria/aria2 && abuild-keygen -i -n -a && abuild -r" builder
