@@ -1,5 +1,5 @@
 FROM alpine:latest as maker
-RUN apk --no-cache add alpine-sdk coreutils cmake linux-headers perl musl m4 sudo \
+RUN apk --no-cache add alpine-sdk coreutils cmake linux-headers perl musl m4 git sudo \
 #  gnutls-dev expat-dev sqlite-dev c-ares-dev cppunit-dev \
   && adduser -G abuild -g "Alpine Package Builder" -s /bin/ash -D builder \
   && echo "builder ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers \
@@ -10,8 +10,10 @@ RUN apk --no-cache add alpine-sdk coreutils cmake linux-headers perl musl m4 sud
 WORKDIR /home/builder
 RUN chmod 777 /home/builder
 RUN wget https://gitlab.alpinelinux.org/alpine/aports/-/archive/master/aports-master.tar.gz && tar -xf aports-master.tar.gz
+RUN wget https://gitlab.alpinelinux.org/alpine/aports/-/archive/master/aports-v3.16.5.tar.gz && tar -xf aports-v3.16.5.tar.gz
 
-RUN su -c "mkdir crypto && cp -r /home/builder/aports-master/testing/crypto++/ ./crypto/ \
+
+RUN su -c "mkdir crypto && cp -r /home/builder/aports-v3.16.5/testing/crypto++/ ./crypto/ \
     && cd crypto/crypto++ && abuild-keygen -i -n -a && abuild -r" builder
 
 #RUN su -c "mkdir sqlight && cp -r /home/builder/aports-3.16-stable/main/sqlite ./sqlight/ \
@@ -42,7 +44,7 @@ RUN su -c "mkdir cares && cp -r /home/builder/aports-master/main/c-ares/ ./cares
 
 
 #RUN tar -czf apkbuild.tar.gz crypto sqlight sodium cares library google curly http ssl
-RUN tar -czf apkbuild.tar.gz crypto c-ares
+RUN tar -czf apkbuild.tar.gz crypto cares
 
 
 #RUN su -c "mkdir aria && cp -r /home/builder/aports-3.15-stable/community/aria2 ./aria/ \
